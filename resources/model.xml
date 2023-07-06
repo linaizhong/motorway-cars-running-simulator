@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<traffic xmlns="http://www.simulator.traffic.kuai.com/model"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.simulator.traffic.kuai.com/model model.xsd" 
+	driveStyle="LEFT">
+	<road id="M4" name="M4" length="19170" width="142" laneNumber="6" layer="1">
+		<sideGroup id="1" direction="RIGHT">
+			<lane id="m4-1" name="Lane 1" length="19170" width="25">
+				<coordinate x="11" y="450" />
+				<coordinate x="19181" y="450" />
+			</lane>		
+			<lane id="m4-2" name="Lane 2" length="19170" width="25">
+				<coordinate x="11" y="476" />
+				<coordinate x="19181" y="476" />
+			</lane>		
+			<lane id="m4-3" name="Lane 3" length="19170" width="25">
+				<coordinate x="11" y="497" />
+				<coordinate x="19181" y="497" />
+			</lane>
+		</sideGroup>		
+		<sideSeparator turnable="NO" />
+		<sideGroup id="2" direction="LEFT">
+			<lane id="m4-4" name="Lane 4" length="19170" width="25">
+				<coordinate x="11" y="522" />
+				<coordinate x="19181" y="522" />
+			</lane>		
+			<lane id="m4-5" name="Lane 1" length="19170" width="25">
+				<coordinate x="11" y="545" />
+				<coordinate x="19181" y="545" />
+			</lane>		
+			<lane id="m4-6" name="Lane 1" length="19170" width="25">
+				<coordinate x="11" y="569" />
+				<coordinate x="19181" y="569" />
+			</lane>		
+		</sideGroup>
+	</road>
+	<road id="Greate Western Highway" name="Greate Western Highway" length="18432" width="52" laneNumber="2" layer="2">
+		<sideGroup id="1" direction="RIGHT">
+			<lane id="gwh-1" name="Lane 1" length="18432" width="25">
+				<coordinate x="30" y="113" />
+				<coordinate x="18464" y="146" />
+			</lane>		
+		</sideGroup>
+		<sideSeparator turnable="NO" />
+		<sideGroup id="2" direction="LEFT">
+			<lane id="gwh-2" name="Lane 2" length="18432" width="25">
+				<coordinate x="30" y="140" />
+				<coordinate x="18464" y="172" />
+			</lane>		
+		</sideGroup>
+	</road>
+	<road id="Russel St." name="Russel St." length="742" width="52" laneNumber="2" layer="2">
+		<sideGroup id="1" direction="UP">
+			<lane id="russel-1" name="Lane 1" length="742" width="25">
+				<coordinate x="460" y="25" />
+				<coordinate x="460" y="762" />
+			</lane>		
+		</sideGroup>
+		<sideSeparator turnable="NO" />
+		<sideGroup id="2" direction="DOWN">
+			<lane id="russel-2" name="Lane 2" length="742" width="25">
+				<coordinate x="486" y="25" />
+				<coordinate x="486" y="762" />
+			</lane>		
+		</sideGroup>
+	</road>
+	<intersection id="gwh-russel_st" name="gwh-russel_st" road1Id="Greate Western Highway" road2Id="Russel St.">
+		<position>
+			<coordinate x="447" y="103" />
+		</position>
+		<position>
+			<coordinate x="501" y="155" />
+		</position>
+	</intersection>
+	<intersection id="m4-russel_st" name="m4-russel_st" road1Id="M4" road2Id="Russel St.">
+		<position>
+			<coordinate x="447" y="438" />
+		</position>
+		<position>
+			<coordinate x="501" y="580" />
+		</position>
+	</intersection>
+</traffic>

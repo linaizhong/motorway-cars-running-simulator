@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sdk="http://www.simulator.traffic.kuai.com/model"
+	targetNamespace="http://www.simulator.traffic.kuai.com/model">
+
+	<element name='traffic'>
+		<complexType>
+			<sequence>
+				<element ref="sdk:road" minOccurs="0" maxOccurs="unbounded" />
+				<element ref="sdk:intersection" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+			<attribute name="driveStyle" use="required">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="LEFT"/>
+						<enumeration value="RIGHT"/>
+					</restriction>
+				</simpleType>
+			</attribute>
+		</complexType>
+	</element>
+
+	<element name="road">
+		<complexType>
+			<sequence>
+				<element ref="sdk:sideGroup" minOccurs="2" maxOccurs="2" />
+				<element ref="sdk:sideSeparator" />
+			</sequence>
+			<attribute name="id" type="string" use="required" />
+			<attribute name="name" type="string" use="required" />
+			<attribute name="length" type="int" use="required" />
+			<attribute name="width" type="int" use="required" />
+			<attribute name="laneNumber" type="int" default="2" />
+			<attribute name="layer" type="int" default="1" />
+		</complexType>
+	</element>
+
+	<element name="sideGroup">
+		<complexType>
+			<sequence>
+				<element ref="sdk:lane" minOccurs="0" maxOccurs="10" />
+			</sequence>
+			<attribute name="id" type="string" use="required" />
+			<attribute name="direction">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="LEFT"/>
+						<enumeration value="RIGHT"/>
+						<enumeration value="UP"/>
+						<enumeration value="DOWN"/>
+					</restriction>
+				</simpleType>
+			</attribute>
+		</complexType>
+	</element>
+
+	<element name="sideSeparator">
+		<complexType>
+			<attribute name="turnable">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="YES"/>
+						<enumeration value="NO"/>
+					</restriction>
+				</simpleType>
+			</attribute>
+		</complexType>
+	</element>
+
+	<element name="lane">
+		<complexType>
+			<sequence>
+				<element ref="sdk:coordinate" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+			<attribute name="id" type="string" use="required" />
+			<attribute name="name" type="string" use="required" />
+			<attribute name="length" type="int" use="required" />
+			<attribute name="width" type="int" use="required" />
+		</complexType>
+	</element>
+
+	<element name="coordinate">
+		<complexType>
+			<attribute name="x" type="int" use="required" />
+			<attribute name="y" type="int" use="required" />
+		</complexType>
+	</element>
+
+	<element name="position">
+		<complexType>
+			<sequence>
+				<element ref="sdk:coordinate" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="lastPosition">
+		<complexType>
+			<sequence>
+				<element ref="sdk:coordinate" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="currentPosition">
+		<complexType>
+			<sequence>
+				<element ref="sdk:coordinate" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="intersection">
+		<complexType>
+			<sequence>
+				<element ref="sdk:position" minOccurs="2" maxOccurs="2"  />
+				<element ref="sdk:road" minOccurs="2" maxOccurs="3" />
+			</sequence>
+			<attribute name="id" type="string" use="required" />
+			<attribute name="name" type="string" use="optional" />
+			<attribute name="road1Id" type="string" use="optional" />
+			<attribute name="road2Id" type="string" use="optional" />
+			<attribute name="road3Id" type="string" use="optional" />
+			<attribute name="road4Id" type="string" use="optional" />
+		</complexType>
+	</element>
+
+	<element name="trafficLight">
+		<complexType>
+			<sequence>
+				<element ref="sdk:position" minOccurs="1" maxOccurs="1" />
+			</sequence>
+			<attribute name="backgroundImage" type="string" use="required" />
+			<attribute name="id" type="string" use="required" />
+			<attribute name="name" type="string" use="required" />
+			<attribute name="length" type="int" use="required" />
+			<attribute name="width" type="int" use="required" />
+			<attribute name="orientation" type="string" use="required" />
+			<attribute name="forwardTime" type="int" use="required" />
+			<attribute name="leftTurnTime" type="int" use="required" />
+			<attribute name="rightTurnTime" type="int" use="required" />
+		</complexType>
+	</element>
+
+	<element name="vehicle">
+		<complexType>
+			<sequence>
+				<element ref="sdk:coordinate" minOccurs="1" maxOccurs="1" />
+				<element ref="sdk:lastPosition" minOccurs="1" maxOccurs="1" />
+				<element ref="sdk:currentPosition" minOccurs="1" maxOccurs="1" />
+			</sequence>
+			<attribute name="backgroundImage" type="string" use="required" />
+			<attribute name="id" type="string" use="required" />
+			<attribute name="name" type="string" use="required" />
+			<attribute name="brand" type="string" use="optional" />
+			<attribute name="driver" type="string" use="optional" />
+			<attribute name="length" type="int" use="required" />
+			<attribute name="width" type="int" use="required" />
+			<attribute name="speed" type="float" use="required" />
+			<attribute name="direction" use="required">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="UP"/>
+						<enumeration value="DOWN"/>
+						<enumeration value="LEFT"/>
+						<enumeration value="RIGHT"/>
+						<enumeration value="LEFT-TURN"/>
+						<enumeration value="RIGHT-TURN"/>
+					</restriction>
+				</simpleType>
+			</attribute>
+		</complexType>
+	</element>
+
+</schema>
